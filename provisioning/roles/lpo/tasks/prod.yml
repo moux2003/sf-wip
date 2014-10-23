@@ -1,0 +1,38 @@
+---
+
+- name: Add user {{ deployUser }}
+  action: user name={{ deployUser }} groups=www-data,sudo password={{ deployUserPassword }} update_password=on_create shell=/bin/bash
+
+# Check directory
+- name: Check or create web directory
+  action: file path=/home/{{ deployUser }}/web owner={{ deployUser }} group=www-data mode=0775 state=directory
+
+# Conf Nginx and php-fpm
+- name: delete default vhost
+  action: file path=/etc/nginx/sites-enabled/default state=absent
+  notify: Restart service nginx
+
+- name: "Change server_names_hash_bucket_size 64 in nginx.conf"
+  action: lineinfile dest=/etc/nginx/nginx.conf state=present regexp="server_names_hash_bucket_size" line="        server_names_hash_bucket_size 64;"
+
+- name: "template php-fpm web"
+  action: template src=php-fpm-pool-symfony.conf.j2 dest=/etc/php5/fpm/pool.d/{{fqdn}}.conf owner=root group=root mode=0644 backup=no
+  notify: Restart service php-fpm
+
+- name: "template web nginx vhost"
+  action: template src=nginx-vhost-symfony.conf.j2 dest=/etc/nginx/sites-available/{{fqdn}} owner=root group=root mode=0644 backup=no
+
+- name: link nginx "web" vhost in sites-enabled
+  action: file src=/etc/nginx/sites-available/{{fqdn}} dest=/etc/nginx/sites-enabled/{{fqdn}} state=link
+  notify: Restart service nginx
+
+# Create Database
+- name : "Create database {{ database_name }}"
+  action: mysql_db name={{ database_name }} state=present
+
+- name: "Create a user {{ database_user }}"
+  action: mysql_user name={{ database_user }} password={{ database_password }} priv={{ database_name }}.*:ALL state=present
+
+- name: "change elasticsearch bind address"
+  lineinfile: 'dest=/etc/elasticsearch/elasticsearch.yml insertafter="^#network\.host" regexp="^network\.host" state=present line="network.host: 127.0.0.1"'
+  notify: Restart service elasticsearch

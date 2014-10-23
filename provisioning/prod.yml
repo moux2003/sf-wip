@@ -1,0 +1,23 @@
+---
+
+- name: Apply common configuration to all nodes
+  hosts: all
+  user: root
+
+  roles:
+    - common
+
+- name: Deploy MySQL and configure the databases
+  hosts: dbservers
+  user: root
+
+- name: Configure and deploy the webservers and application code
+  hosts: webservers
+  user: root
+
+  roles:
+    - nginx
+    - php-fpm
+    - composer
+    - elasticsearch
+    - lpo

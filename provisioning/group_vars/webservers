@@ -1,0 +1,22 @@
+###########################################################
+# Variables de configuration de la distribution
+###########################################################
+framework: symfony
+
+web_path: "web"
+
+###########################################################
+# Variables de configuration du projet
+###########################################################
+
+# URL d'accès au dépôt git du projet
+git_repository: git@git.niji.fr:mri-mri/mri-web.git
+
+# Nom de domaine global pour le projet
+project_dns: mri.dev
+
+# Paquet debian mariadb
+mariadb_repository: 'deb http://nwps.ws/pub/mariadb/repo/10.0/debian wheezy main'
+
+# Php version
+php_version: 5.5

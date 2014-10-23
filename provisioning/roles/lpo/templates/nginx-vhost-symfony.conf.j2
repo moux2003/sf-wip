@@ -1,0 +1,48 @@
+upstream phpfpm {
+    server unix:/var/run/{{ fqdn }}.sock;
+}
+
+server {
+    listen 80;
+
+    # Make site accessible from http://{{ fqdn }}/
+    server_name {{ fqdn }};
+
+    error_log /var/log/nginx/{{ fqdn }}.error.log;
+    access_log /var/log/nginx/{{ fqdn }}.access.log;
+
+    ##
+    # Gzip Settings
+    ##
+    gzip on;
+    gzip_disable "msie6";
+    gzip_comp_level 9;
+    gzip_min_length  1100;
+    gzip_buffers 16 8k;
+    gzip_proxied any;
+    # gzip_http_version 1.1;
+    gzip_types       text/plain application/xml text/css text/js text/xml application/x-javascript application/javascript text/javascript application/json application/xml+rss;
+
+    root /home/{{deployUser}}/web/current/{{web_path}};
+
+	# strip app.php/ prefix if it is present
+    rewrite ^/app\.php/?(.*)$ /$1 permanent;
+
+    location / {
+        index app.php;
+        try_files $uri @rewriteapp;
+    }
+
+    location @rewriteapp {
+        rewrite ^(.*)$ /app.php/$1 last;
+    }
+
+    # pass the PHP scripts to FastCGI server from upstream phpfpm
+    location ~ ^/app\.php(/|$) {
+        fastcgi_pass phpfpm;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param  HTTPS on;
+    }
+}

@@ -1,0 +1,16 @@
+Lpo\InfraBundle\Entity\Chambre:
+    type: entity
+    table: chambres
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+            nullable: false
+        description:
+            type: text
+            nullable: true

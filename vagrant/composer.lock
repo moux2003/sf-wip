@@ -1,0 +1,52 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "215ca28780a56ba19f10d4e01b5577ef",
+    "packages": [
+        {
+            "name": "niji/vagrant",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "git@git.niji.fr:web/vagrant.git",
+                "reference": "a9c444a297c9b1feb48ae7310ca6f72382ad11b2"
+            },
+            "bin": [
+                "./scripts/vagrant"
+            ],
+            "type": "library",
+            "authors": [
+                {
+                    "name": "Jean-Philippe LAINE",
+                    "email": "jean-philippe.laine@niji.fr"
+                },
+                {
+                    "name": "Anthony ARNAUD",
+                    "email": "anthony.arnaud@niji.fr"
+                }
+            ],
+            "description": "Niji - Template Vagrant",
+            "time": "2014-10-16 12:20:54"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": [
+
+    ],
+    "prefer-stable": false,
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}

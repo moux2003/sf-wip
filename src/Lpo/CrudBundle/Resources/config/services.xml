@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="lpo_crud.handler.exemple" class="MRi\CrudBundle\Handler\ExempleCrudHandler">
+            <tag name="lpo_crud.handler"/>
+            <argument type="service" id="lpo_infra.manager.default" />
+        </service>
+        
+        <service id="lpo_crud.form.type.exemple" class="MRi\CrudBundle\Form\Type\ExempleType">
+            <tag name="form.type" alias="exemple" />
+        </service>
+    </services>
+    
+</container>

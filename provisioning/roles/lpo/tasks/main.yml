@@ -1,0 +1,17 @@
+---
+
+- name: Install module imagemagick
+  action: apt pkg={{item}} state=latest update-cache=yes
+  with_items:
+    - imagemagick
+
+- name: Install mariadb dependancies
+  action: apt pkg={{item}} state=latest update-cache=yes
+  with_items:
+    - python-software-properties
+
+- include: vagrant.yml
+  when: env == "vagrant"
+
+- include: prod.yml
+  when: env == "prod"

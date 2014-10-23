@@ -1,0 +1,7 @@
+lpo_crud_create_exemple:
+    path:     /admin/exemple/create
+    defaults: { _controller: LpoCrudBundle:Exemple:create }
+
+lpo_crud_edit_exemple:
+    path:     /admin/exemple/edit/{id}
+    defaults: { _controller: LpoCrudBundle:Exemple:edit }

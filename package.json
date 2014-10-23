@@ -1,0 +1,25 @@
+{
+  "name": "mri-web",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@git.niji.fr:mri-mri/mri-web.git"
+  },
+  "private": true,
+  "author": {
+    "name": "Maxime HERMOUET"
+  },
+  "scripts": {
+    "deploy-prod": "node ./node_modules/flightplan/bin/fly.js deploy:production",
+    "deploy-preprod": "node ./node_modules/flightplan/bin/fly.js deploy:preproduction"
+  },
+  "devDependencies": {
+    "flightplan": "^0.4.3",
+    "moment": "^2.8.3",
+    "minimist": "^1.1.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "license": "Niji"
+}

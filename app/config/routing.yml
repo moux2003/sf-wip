@@ -1,0 +1,11 @@
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+mri_security:
+    resource: "@LpoSecurityBundle/Resources/config/routing.yml"
+    prefix:   /
+
+mri_crud:
+    resource: "@LpoCrudBundle/Resources/config/routing.yml"
+    prefix:   /
+

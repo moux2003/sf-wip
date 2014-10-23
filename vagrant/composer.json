@@ -1,0 +1,15 @@
+{
+    "repositories": [
+        {
+            "url": "git@git.niji.fr:web/vagrant.git",
+            "type": "git"
+        }
+    ],
+    "require": {
+        "niji/vagrant": "1.0.*"
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "preferred-install": "dist"
+    }
+}

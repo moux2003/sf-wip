@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="admin.exemple.create.title">
+                <source>admin.exemple.create.title</source>
+                <target>Création d'un nouvel exemple</target>
+            </trans-unit>
+            <trans-unit id="admin.exemple.create.success">
+                <source>admin.exemple.create.success</source>
+                <target>L'exemple a bien été créé.</target>
+            </trans-unit>
+             <trans-unit id="admin.exemple.edit.success">
+                <source>admin.exemple.edit.success</source>
+                <target>L'exemple a bien été modifié.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

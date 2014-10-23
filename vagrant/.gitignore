@@ -1,0 +1,4 @@
+# Vagrant specific platform folder
+.vagrant/
+# Composer folder
+vendor/

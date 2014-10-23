@@ -1,0 +1,14 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+ANSIBLE_PLAYBOOK = "../provisioning/dev.yml"
+BOX_URL = "http://192.168.2.139/vagrant/debian/niji-debian-7.6.box"
+MOUNT_POINT = "/vagrant"
+FOLDER_SYNC = "../"
+# PROXY = FALSE # Décommenter en dehors de chez niji
+MEMORY = 2048
+CPU = 2
+BOX_PRIVATE_IP = "192.168.33.10"
+PROJECT_NAME = "Lpo"
+
+load './vendor/niji/vagrant/Vagrantfile'
